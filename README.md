@@ -1,7 +1,7 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=13048719&assignment_repo_type=AssignmentRepo)
 
-# Movie Project>>Diala
 
+# Movie Project>>Diala
 ## Overview
 
 You have came so far and learnt a lot about frontend development thus far, congrats ! Now let us put your skills in use and create something amazing. As we have mentioned a lot while we are learning about web development, working with APIs to make our websites interactive sits at the core of frontend web development.
