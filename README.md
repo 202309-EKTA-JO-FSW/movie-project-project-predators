@@ -1,8 +1,10 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=13048719&assignment_repo_type=AssignmentRepo)
-# Movie Project
+
+# Movie Project>>Diala
 
 ## Overview
-You have came so far and learnt a lot about frontend development thus far, congrats ! Now let us put your skills in use and create something amazing. As we have mentioned a lot while we are learning about web development, working with APIs to make our websites interactive sits at the core of frontend web development. 
+
+You have came so far and learnt a lot about frontend development thus far, congrats ! Now let us put your skills in use and create something amazing. As we have mentioned a lot while we are learning about web development, working with APIs to make our websites interactive sits at the core of frontend web development.
 At the end, frontend websites work as interfaces that give us the ability to interact with data. All this data is coming from some form of an API.
 
 The API you will be interacting with is a movie API that can be used to retreive information about movies and actors. It is quite extensive and serves many purposes for your needs. In addition to that, it has quite a versatile searching mechanism that gives you the ability to reach for the information you need.
