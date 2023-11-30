@@ -1,8 +1,4 @@
-import '@/styles/globals.css'
 
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
 import { getActors } from "@/util/API"
 
 export default async function Actors(){

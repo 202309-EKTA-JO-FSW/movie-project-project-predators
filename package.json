@@ -10,10 +10,9 @@
     "format": "prettier --check --ignore-path .gitignore .",
     "format:fix": "prettier --write --ignore-path .gitignore .",
     "prepare": "husky install"
-
   },
   "dependencies": {
-    "next": "14.0.3",
+    "next": "^14.0.3",
     "react": "^18",
     "react-dom": "^18",
     "swc": "^1.0.11"
