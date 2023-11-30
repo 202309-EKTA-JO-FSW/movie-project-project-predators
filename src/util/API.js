@@ -20,13 +20,13 @@ export async function getTopRated() {
 export async function getMovieDetails () {
     const res = await fetch(`${BASE_URL}/movie/movie_id?language=en-US&api_key=${API_KEY}`)
     const data = await res.json()
-    return data.results
+    return data
 }
 
 export async function getMovieCredits () {
     const res = await fetch(`${BASE_URL}/movie/movie_id/credits?language=en-US&api_key=${API_KEY}`)
     const data = await res.json()
-    return data.results
+    return data.cast
 }
 
 // The idea of refactoring is a good practice when working with sensetive data like APIs, as well as redundant information that is being shared multiple times
