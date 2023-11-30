@@ -1,4 +1,5 @@
 
+
 import { getActors } from "@/util/API"
 
 export default async function Actors(){
