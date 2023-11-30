@@ -1,4 +1,4 @@
-// import '@/styles/globals.css'
+import '@/styles/globals.css'
 // import SingleMoviePage from './movies/[movieId]'
 
 // const TestPage = () => {
