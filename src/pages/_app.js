@@ -1,14 +1,11 @@
 import '@/styles/globals.css'
-// import SingleMoviePage from './movies/[movieId]'
-
-// const TestPage = () => {
-//   const movieId = 1075794
-
-//   return <SingleMoviePage id={movieId} />
-// }
+import Navbar from '../components/Navbar'
 
 export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Navbar />
+      <Component {...pageProps} />
+    </>
+  );
 }
-
-// export default TestPage
