@@ -1,7 +1,7 @@
 // The APIs to be used in our project
 
-const API_KEY_MASH = process.env.NEXT_PUBLIC_API_KEY
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+const API_KEY_MASH = process.envm.NEXT_PUBLIC_API_KEY_MASH
+const BASE_URL = process.envm.NEXT_PUBLIC_BASE_URL
 // variables are stored in an .env file to allow being used more than once
 
 export async function getTrending() {
