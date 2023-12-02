@@ -1,7 +1,26 @@
+<<<<<<< HEAD
 // The APIs to be used in our project
 
 const API_KEY_MASH = process.envm.NEXT_PUBLIC_API_KEY_MASH
 const BASE_URL = process.envm.NEXT_PUBLIC_BASE_URL
+=======
+const API_KEY_HADEEL = process.env.NEXT_PUBLIC_API_KEY_HADEEL;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+const API_KEY_MASH = process.env.NEXT_PUBLIC_API_KEY
+
+
+export const getActors = async (page) => {
+    try {
+        const res = await fetch(`${BASE_URL}/person/popular?language=en-US&page=${page??1}&api_key=${API_KEY_HADEEL}`);
+        const data = await res.json();
+        return data.results;
+      } catch (error) {
+        console.error('Error fetching data:',error);
+        return [];
+      }
+}
+// The APIs to be used in our project
+>>>>>>> 9c5c1a083cc7fe63f4feeae96957114bee2c9d2f
 // variables are stored in an .env file to allow being used more than once
 
 export async function getTrending() {
