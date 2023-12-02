@@ -5,6 +5,12 @@ async function SingleMoviePage(props) {
     const movieDetails = await getMovieDetails(props.id)
     const movieCredits = await getMovieCredits(props.id)
     const IMAGE_BASE_URL = process.env.NEXT_PUBLIC_IMAGE_BASE_URL
+    
+    
+    
+    
+    
+    
     return (
     <div className="all">
         <div className="image">
