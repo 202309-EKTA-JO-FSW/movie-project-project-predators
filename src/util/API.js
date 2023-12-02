@@ -1,9 +1,14 @@
 const API_KEY_HADEEL = process.env.NEXT_PUBLIC_API_KEY_HADEEL;
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 const API_KEY_MASH = process.env.NEXT_PUBLIC_API_KEY
+// Diala's API
+// Ahmad's API
 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
-export const getActors = async (page) => {
+// The APIs to be used in our project
+// variables are stored in an .env file to allow being used more than once
+
+export async function getActors(page) {
     try {
         const res = await fetch(`${BASE_URL}/person/popular?language=en-US&page=${page??1}&api_key=${API_KEY_HADEEL}`);
         const data = await res.json();
@@ -13,33 +18,53 @@ export const getActors = async (page) => {
         return [];
       }
 }
-// The APIs to be used in our project
-// variables are stored in an .env file to allow being used more than once
 
 export async function getTrending() {
     // using await and fetch to make the code more readable than using options and .then
+    try {
     const res = await fetch(`${BASE_URL}/trending/movie/day?language=en-US&api_key=${API_KEY_MASH}`)
     const data = await res.json()
-    return data.results
+    return data.results 
+    } catch (error) {
+        console.error('Error fetching data:',error);
+        return [];
+    }
 }
 
 export async function getTopRated() {
+    try {
     const res = await fetch(`${BASE_URL}/movie/top_rated?language=en-US&page=1&api_key=${API_KEY_MASH}`)
     const data = await res.json()
-    return data.results
+    return data.results 
+    }  catch (error) {
+        console.error('Error fetching data:',error);
+        return [];
+    }
 }
 
 export async function getMovieDetails () {
+    try {
     const res = await fetch(`${BASE_URL}/movie/movie_id?language=en-US&api_key=${API_KEY_MASH}`)
     const data = await res.json()
     return data
+    }  catch (error) {
+        console.error('Error fetching data:',error);
+        return [];
+    }
 }
 
 export async function getMovieCredits () {
+    try {
     const res = await fetch(`${BASE_URL}/movie/movie_id/credits?language=en-US&api_key=${API_KEY_MASH}`)
     const data = await res.json()
     return data.cast
+    }  catch (error) {
+        console.error('Error fetching data:',error);
+        return [];
+    }
 }
+
+
 
 
 
