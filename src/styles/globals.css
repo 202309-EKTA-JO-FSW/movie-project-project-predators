@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -17,11 +13,25 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  margin: 0 auto;
+}
+
+header {
+  background-color: tomato;
+  box-shadow: 1px 1px 5px 0px tomato;
+}
+
+nav {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 400px;
+  margin-left: 50px;
+  justify-content: space-between;
+}
+
+.anchor {
+  text-decoration: none;
+  color: white;
 }
