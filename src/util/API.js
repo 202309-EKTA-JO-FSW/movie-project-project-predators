@@ -19,6 +19,19 @@ export async function getActors(page) {
       }
 }
 
+export async function getMovieList(page,type="top_rated") {
+    try {
+        // API Key should be changed 
+        const res = await fetch(`${BASE_URL}/movie/${type}?language=en-US&page=${page??1}&api_key=${API_KEY_HADEEL}`);
+        const data = await res.json();
+        return data.results;
+      } catch (error) {
+        console.error('Error fetching data:',error);
+        return [];
+      }
+}
+
+
 export async function getTrending() {
     // using await and fetch to make the code more readable than using options and .then
     try {
