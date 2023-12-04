@@ -20,5 +20,18 @@ export default function Navbar() {
         movies-list
       </Link>
     </nav>
+    // <header>
+    //   <nav>
+    //     <Link className='anchor' href="/">
+    //       Home
+    //     </Link>
+    //     <Link className='anchor' href="/actors/actors">
+    //       Actors
+    //     </Link>
+    //     <Link className='anchor' href="/movies">
+    //       Movies
+    //     </Link>
+    //   </nav>
+    // </header>
   );
 }

@@ -25,6 +25,11 @@ export async function getMovieList(page,type="top_rated") {
         const res = await fetch(`${BASE_URL}/movie/${type}?language=en-US&page=${page??1}&api_key=${API_KEY_HADEEL}`);
         const data = await res.json();
         return data.results;
+
+export async function getActor(actorId) {
+    try {
+        const res = await fetch(`${BASE_URL}/person/${actorId}?api_key=${API_KEY_HADEEL}`);
+        return await res.json();
       } catch (error) {
         console.error('Error fetching data:',error);
         return [];
