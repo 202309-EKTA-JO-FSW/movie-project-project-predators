@@ -1,0 +1,44 @@
+  #main {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+  .actorsList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .actorsList li {
+    width: 23%; /* Each actor takes up 20% of the container */
+    box-sizing: border-box; /* Include padding and border in width calculation */
+    padding: 10px; /* Add padding for spacing between actors */
+    border: 1px solid #ddd; /* Add border around each li element */
+    border-radius: 8px; /* Add border-radius for a rounded look */
+    margin: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 1px 5px 0px gray;
+  }
+  
+  .actorsList h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+  
+  .actorsList img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    padding-left: 10;
+    padding-right: 10;
+  }
+  
+  .actorsList img:hover {
+    transform: scale(1.1);
+  }

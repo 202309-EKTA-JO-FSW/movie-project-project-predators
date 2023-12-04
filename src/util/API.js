@@ -19,6 +19,17 @@ export async function getActors(page) {
       }
 }
 
+
+export async function getActor(actorId) {
+    try {
+        const res = await fetch(`${BASE_URL}/person/${actorId}?api_key=${API_KEY_HADEEL}`);
+        return await res.json();
+      } catch (error) {
+        console.error('Error fetching data:',error);
+        return [];
+      }
+}
+
 export async function getTrending() {
     // using await and fetch to make the code more readable than using options and .then
     try {
