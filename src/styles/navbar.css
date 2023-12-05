@@ -1,0 +1,43 @@
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: tomato;
+    padding: 10px;
+  }
+  
+  .anchor {
+    color: white;
+    text-decoration: none;
+    position: relative;
+  }
+  
+  .anchor:hover {
+    background-color: #555;
+  }
+  
+  .dropdown {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #555;
+    padding: 10px;
+    display: none;
+  }
+  
+  .anchor.active .dropdown {
+    display: flex;
+  }
+  
+  .dropdown a {
+    color: white;
+    text-decoration: none;
+    margin: 5px 0;
+  }
+  
+  .dropdown a:hover {
+    text-decoration: underline;
+  }
+  
+  

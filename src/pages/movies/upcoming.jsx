@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { getPopularMovies } from "@/util/API"
+import { getUpcoming } from "@/util/API";
 import Link from 'next/link';
 
-export default function PopularMovies() {
-  const [data, setData] = useState([]);
+export default function Upcoming() {
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState({ id: 1 });
   const IMAGE_BASE_URL = process.env.NEXT_PUBLIC_IMAGE_BASE_URL;
@@ -12,9 +12,9 @@ export default function PopularMovies() {
     fetchData();
   }, []);
 
-  const setPopular = async (page) => {
+  const setUpcoming = async (page) => {
     try {
-      const result = await getPopularMovies(page.id);
+      const result = await getUpcoming  (page.id);
       setData(result);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -24,7 +24,7 @@ export default function PopularMovies() {
   };
 
   const fetchData = async () => {
-    await setPopular({ id: 1 });
+    await setUpcoming({ id: 1 });
   };
 
   const handleShowMoreClick = async () => {
@@ -32,7 +32,7 @@ export default function PopularMovies() {
     const nextPageId = page.id + 1;
     const nextPage = { id: nextPageId };
     setPage(nextPage);
-    await setPopular(nextPage);
+    await setUpcoming(nextPage);
   };
 
   return (

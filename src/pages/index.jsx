@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { getPopularMovies } from "@/util/API"
+import { getPopularMovies } from "@/util/API";
 import Link from 'next/link';
 
-export default function PopularMovies() {
-  const [data, setData] = useState([]);
+export default function Home() {
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState({ id: 1 });
   const IMAGE_BASE_URL = process.env.NEXT_PUBLIC_IMAGE_BASE_URL;
@@ -12,7 +12,7 @@ export default function PopularMovies() {
     fetchData();
   }, []);
 
-  const setPopular = async (page) => {
+  const setHome = async (page) => {
     try {
       const result = await getPopularMovies(page.id);
       setData(result);
@@ -24,7 +24,7 @@ export default function PopularMovies() {
   };
 
   const fetchData = async () => {
-    await setPopular({ id: 1 });
+    await setHome({ id: 1 });
   };
 
   const handleShowMoreClick = async () => {
@@ -32,15 +32,18 @@ export default function PopularMovies() {
     const nextPageId = page.id + 1;
     const nextPage = { id: nextPageId };
     setPage(nextPage);
-    await setPopular(nextPage);
+    await setHome(nextPage);
   };
 
   return (
-    <div className='header'>
+    <div className="everything">
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className='latestmovies'>
+      <div className='header'>
+        <h3 className='welcome'>Welcome to HDMA - Your Gateway to Cinematic Brilliance in High Definition!</h3>
+      <h3>What's Popular</h3>
+      <div className='latestmovies'>
           {data.map(movie => (
             <div key={movie.id} className='latest'>
               <h2> {movie.original_title}</h2>
@@ -48,11 +51,9 @@ export default function PopularMovies() {
                 <img src={`${IMAGE_BASE_URL}${movie.poster_path}`} alt={`${movie.original_title} profile`} />
               </Link>
             </div>
-          ))}
-        </div>
-      )}
-
+          ))}</div>
       <button className='button' onClick={handleShowMoreClick}>Show more</button>
-    </div>
+      </div>
+      )}</div>
   );
 }

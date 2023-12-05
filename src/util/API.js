@@ -31,6 +31,42 @@ export async function getPopularMovies (page) {
   }
 }  
 
+export async function getTopRated (page) {
+  try {
+      const res = await fetch(`${BASE_URL}/movie/top_rated?language=en-US&page=${page??1}&api_key=${API_KEY_MASH}`)
+      const data = await res.json();
+      console.log('API Response:', data)
+      return data.results
+  } catch (error) {
+    console.error('Error fetching data', error)
+    return [] 
+  }
+}  
+
+export async function getNowPlaying (page) {
+  try {
+      const res = await fetch(`${BASE_URL}/movie/now_playing?language=en-US&page=${page??1}&api_key=${API_KEY_MASH}`)
+      const data = await res.json();
+      console.log('API Response:', data)
+      return data.results
+  } catch (error) {
+    console.error('Error fetching data', error)
+    return [] 
+  }
+}  
+
+export async function getUpcoming (page) {
+  try {
+      const res = await fetch(`${BASE_URL}/movie/upcoming?language=en-US&page=${page??1}&api_key=${API_KEY_MASH}`)
+      const data = await res.json();
+      console.log('API Response:', data)
+      return data.results
+  } catch (error) {
+    console.error('Error fetching data', error)
+    return [] 
+  }
+}  
+
 export async function getActor(actorId) {
     try {
         const res = await fetch(`${BASE_URL}/person/${actorId}?api_key=${API_KEY_HADEEL}`);
