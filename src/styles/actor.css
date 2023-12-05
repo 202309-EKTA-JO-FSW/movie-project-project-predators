@@ -1,0 +1,95 @@
+.actorCard {
+  width: 80%;
+  height: 400px;
+  border-radius: 10px;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  margin: 0 auto;
+  box-shadow: 1px 1px 5px 1px aliceblue;
+  
+}
+
+.readMore {
+  color: blue;
+  cursor: pointer;
+}
+
+.cardHeader{
+  display: flex;
+  align-items: center;
+}
+.imageContainer img {
+  width: 250px;
+  height: 380px;
+  border-radius: 10px;
+}
+
+.listStyle {
+  list-style: none;
+  align-self: center;
+}
+
+.listStyle div {
+  margin-bottom: 20px;
+}
+
+.listStyle p {
+  font-weight: 700;
+}
+
+.listStyle span {
+  font-weight: 400;
+}
+
+.bio{
+  overflow-wrap: break-word;
+}
+.horizontalLine{
+  width: 100%;
+  margin-top: 16px;
+  border: 1px dotted lightgray;
+}
+
+.dropdownContainer {
+  width: 100px;
+  position: relative;
+  display: inline-block;
+  user-select: none;
+}
+
+.selectedOption {
+  width: 100%;
+  padding: 8px;
+  appearance: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dropdownList {
+  position: absolute;
+  bottom: 100%; /* Change to bottom to open upwards */
+  left: 0;
+  width: 100%;
+  max-height: 150px; /* Set the maximum height you desire */
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-bottom: none; /* Remove the bottom border to create a seamless look */
+  border-radius: 4px 4px 0 0; /* Adjust border-radius for the top corners */
+  background-color: white;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdownList li {
+  padding: 8px;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+}
+
+.dropdownList li:last-child {
+  border-bottom: none;
+}

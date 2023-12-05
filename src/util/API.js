@@ -25,11 +25,49 @@ export async function getPopularMovies (page) {
       const data = await res.json();
       console.log('API Response:', data)
       return data.results
+  } catch (error) {
+    console.error('Error fetching data', error)
+    return [] 
+  }
+}  
+
+export async function getActor(actorId) {
+    try {
+        const res = await fetch(`${BASE_URL}/person/${actorId}?api_key=${API_KEY_HADEEL}`);
+        return await res.json();
+      } catch (error) {
+        console.error('Error fetching data:',error);
+        return [];
+      }
+}
+
+export async function getTrending() {
+    try {
+    const res = await fetch(`${BASE_URL}/trending/movie/day?language=en-US&api_key=${API_KEY_MASH}`)
+    const data = await res.json()
+    return data.results 
     } catch (error) {
       console.error('Error fetching data:',error);
       return [];
     }
 }
+
+export async function getMovieDetails(movieId) {
+
+  const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NzI5NmZlM2RlMTE1NWYyZTlhZTA1YWRmMTE1Mzk0YyIsInN1YiI6IjY1Njc2MDBiYTM0OTExMDBhYzU4Njg1NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tOnFwRX8GjPQXxj7Zkd-EqMIQ3UhSWwImA3lyrHVXAk',} 
+  };
+  
+  const res = await fetch(url, options)
+  const data = await res.json();
+        console.log('API Response:', data)
+        return data;
+  }
+  
 
 
 // const fetch = require('node-fetch');
@@ -48,21 +86,6 @@ export async function getPopularMovies (page) {
 //   .then(json => console.log(json))
 //   .catch(err => console.error('error:' + err));
 
-export async function getMovieDetails(movieId) {
-
-const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
-const options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NzI5NmZlM2RlMTE1NWYyZTlhZTA1YWRmMTE1Mzk0YyIsInN1YiI6IjY1Njc2MDBiYTM0OTExMDBhYzU4Njg1NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tOnFwRX8GjPQXxj7Zkd-EqMIQ3UhSWwImA3lyrHVXAk',} 
-};
-
-const res = await fetch(url, options)
-const data = await res.json();
-      console.log('API Response:', data)
-      return data;
-}
 
 
 
