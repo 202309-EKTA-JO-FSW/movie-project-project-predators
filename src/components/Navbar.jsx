@@ -11,7 +11,7 @@ export default function Navbar() {
         <Link className='anchor' href="/actors/actors">
           Actors
         </Link>
-        <Link className='anchor' href="/movies">
+        <Link className='anchor' href="/movies/popular">
           Movies
         </Link>
       </nav>
