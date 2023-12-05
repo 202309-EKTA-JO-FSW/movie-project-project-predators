@@ -1,0 +1,51 @@
+.welcome {
+    font-size: 2em; /* Set the font size to make it huge */
+    text-align: center; /* Center the text */
+    color:#446d92; /* Set text color to white */
+    margin: 50px 0; /* Add margin for spacing */
+  }
+  
+
+.latestmovies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .latest {
+    flex: 0 0 20%; /* Set each movie to take 20% of the container width */
+    text-align: center;
+    margin: 10px;
+    justify-content: center;
+  }
+  
+  .latest img {
+    width: 75%; /* Make the image fill the container */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain;
+    justify-content: center;
+  }
+  
+  .latest b {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    justify-content: center;
+  }
+  
+  .latest span {
+    display: block;
+    color: #555;
+    justify-content: center;
+  }
+
+  .header {
+    justify-content: center;
+    margin: 50px 0;
+    text-align: center;
+  }
+  .button {
+    margin-top: 20px;
+    width: 50%;
+    height: 40px;
+  }

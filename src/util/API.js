@@ -1,5 +1,5 @@
 const API_KEY_HADEEL = process.env.NEXT_PUBLIC_API_KEY_HADEEL;
-const API_KEY_MASH = process.env.NEXT_PUBLIC_API_KEY
+const API_KEY_MASH = process.env.NEXT_PUBLIC_API_KEY_MASH
 // Diala's API
 // Ahmad's API
 
@@ -19,6 +19,53 @@ export async function getActors(page) {
       }
 }
 
+export async function getPopularMovies (page) {
+  try {
+      const res = await fetch(`${BASE_URL}/movie/popular?language=en-US&page=${page??1}&api_key=${API_KEY_MASH}`)
+      const data = await res.json();
+      console.log('API Response:', data)
+      return data.results
+  } catch (error) {
+    console.error('Error fetching data', error)
+    return [] 
+  }
+}  
+
+export async function getTopRated (page) {
+  try {
+      const res = await fetch(`${BASE_URL}/movie/top_rated?language=en-US&page=${page??1}&api_key=${API_KEY_MASH}`)
+      const data = await res.json();
+      console.log('API Response:', data)
+      return data.results
+  } catch (error) {
+    console.error('Error fetching data', error)
+    return [] 
+  }
+}  
+
+export async function getNowPlaying (page) {
+  try {
+      const res = await fetch(`${BASE_URL}/movie/now_playing?language=en-US&page=${page??1}&api_key=${API_KEY_MASH}`)
+      const data = await res.json();
+      console.log('API Response:', data)
+      return data.results
+  } catch (error) {
+    console.error('Error fetching data', error)
+    return [] 
+  }
+}  
+
+export async function getUpcoming (page) {
+  try {
+      const res = await fetch(`${BASE_URL}/movie/upcoming?language=en-US&page=${page??1}&api_key=${API_KEY_MASH}`)
+      const data = await res.json();
+      console.log('API Response:', data)
+      return data.results
+  } catch (error) {
+    console.error('Error fetching data', error)
+    return [] 
+  }
+}  
 
 export async function getActor(actorId) {
     try {
@@ -31,69 +78,180 @@ export async function getActor(actorId) {
 }
 
 export async function getTrending() {
-    // using await and fetch to make the code more readable than using options and .then
     try {
     const res = await fetch(`${BASE_URL}/trending/movie/day?language=en-US&api_key=${API_KEY_MASH}`)
     const data = await res.json()
     return data.results 
     } catch (error) {
-        console.error('Error fetching data:',error);
-        return [];
+      console.error('Error fetching data:',error);
+      return [];
     }
 }
 
-export async function getTopRated() {
-    try {
-    const res = await fetch(`${BASE_URL}/movie/top_rated?language=en-US&page=1&api_key=${API_KEY_MASH}`)
-    const data = await res.json()
-    return data.results 
-    }  catch (error) {
-        console.error('Error fetching data:',error);
-        return [];
-    }
-}
-
-export async function getMovieDetails () {
-    try {
-    const res = await fetch(`${BASE_URL}/movie/movie_id?language=en-US&api_key=${API_KEY_MASH}`)
+export async function getMovieDetails(movieId) {
+  try {
+    const res = await fetch(`${BASE_URL}/movie/${movieId}?language=en-US&api_key=${API_KEY_MASH}`)
     const data = await res.json()
     return data
-    }  catch (error) {
-        console.error('Error fetching data:',error);
-        return [];
+    } catch (error) {
+      console.error('Error fetching data:',error);
+      return [];
     }
 }
 
-export async function getMovieCredits () {
-    try {
-    const res = await fetch(`${BASE_URL}/movie/movie_id/credits?language=en-US&api_key=${API_KEY_MASH}`)
-    const data = await res.json()
-    return data.cast
-    }  catch (error) {
-        console.error('Error fetching data:',error);
-        return [];
+export async function getMovieRelease(movieId) {
+  try {
+    const res = await fetch(`${BASE_URL}/movie/${movieId}/release_dates`, {
+      headers: {
+        'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NzI5NmZlM2RlMTE1NWYyZTlhZTA1YWRmMTE1Mzk0YyIsInN1YiI6IjY1Njc2MDBiYTM0OTExMDBhYzU4Njg1NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tOnFwRX8GjPQXxj7Zkd-EqMIQ3UhSWwImA3lyrHVXAk`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+
+      const usRelease = data.results.find(entry => entry.iso_3166_1 === "US");
+
+      if (usRelease) {
+        return usRelease;
+      } else {
+        console.error('Release information not found for the United States.');
+        return null;
+      }
+    } else {
+      console.error(`Error: ${res.status} - ${res.statusText}`);
+      return null; 
     }
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return null;
+  }
+}
+
+export async function getRuntime(movieId) {
+  try {
+    const res = await fetch(`${BASE_URL}/movie/${movieId}/translations`, {
+      headers: {
+        'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NzI5NmZlM2RlMTE1NWYyZTlhZTA1YWRmMTE1Mzk0YyIsInN1YiI6IjY1Njc2MDBiYTM0OTExMDBhYzU4Njg1NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tOnFwRX8GjPQXxj7Zkd-EqMIQ3UhSWwImA3lyrHVXAk`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+
+      const runtimeEntry = data.translations.find(entry => entry.iso_3166_1 === "US");
+
+      if (runtimeEntry && runtimeEntry.data && runtimeEntry.data.runtime) {
+        const totalMinutes = runtimeEntry.data.runtime;
+        const hours = Math.floor(totalMinutes / 60);
+        const minutes = totalMinutes % 60;
+        const formattedRuntime = `${hours}h ${minutes}m`;
+        return formattedRuntime;
+      } else {
+        console.error('Runtime information not found for the United States.');
+        return null;
+      }
+    } else {
+      console.error(`Error: ${res.status} - ${res.statusText}`);
+      return null; 
+    }
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return null;
+  }
 }
 
 
+export async function getMovieCredits(movieId) {
+  try {
+    const res = await fetch(`${BASE_URL}/movie/${movieId}/credits`, {
+      headers: {
+        'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NzI5NmZlM2RlMTE1NWYyZTlhZTA1YWRmMTE1Mzk0YyIsInN1YiI6IjY1Njc2MDBiYTM0OTExMDBhYzU4Njg1NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tOnFwRX8GjPQXxj7Zkd-EqMIQ3UhSWwImA3lyrHVXAk`,
+        'Content-Type': 'application/json',
+      },
+    });
 
+    if (res.ok) {
+      const data = await res.json();
+      return data;
+    } else {
+      console.error(`Error: ${res.status} - ${res.statusText}`);
+      return null;
+    }
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return null;
+  }
+}
 
+export async function getRelatedMovies(movieId) {
+  try {
+    const res = await fetch(`${BASE_URL}/movie/${movieId}/similar?language=en-US&page=1`, {
+      headers: {
+        'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NzI5NmZlM2RlMTE1NWYyZTlhZTA1YWRmMTE1Mzk0YyIsInN1YiI6IjY1Njc2MDBiYTM0OTExMDBhYzU4Njg1NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tOnFwRX8GjPQXxj7Zkd-EqMIQ3UhSWwImA3lyrHVXAk`,
+        'Content-Type': 'application/json',
+      },
+    });
 
-// The idea of refactoring is a good practice when working with sensetive data like APIs, as well as redundant information that is being shared multiple times
+    if (res.ok) {
+      const data = await res.json();
+      // console.log('API Response:', data); 
+      return data.results
+    } else {
+      console.error(`Error: ${res.status} - ${res.statusText}`);
+      return [];
+    }
+  } catch (error) {
+    console.error('Error fetching related movies:', error);
+    return [];
+  }
+}
 
-// Original code:
-// const fetch = require('node-fetch');
+export async function getTrailer(movieId) {
+  try {
+    const res = await fetch(`${BASE_URL}/movie/${movieId}/videos?language=en-US`, {
+      headers: {
+        'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NzI5NmZlM2RlMTE1NWYyZTlhZTA1YWRmMTE1Mzk0YyIsInN1YiI6IjY1Njc2MDBiYTM0OTExMDBhYzU4Njg1NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tOnFwRX8GjPQXxj7Zkd-EqMIQ3UhSWwImA3lyrHVXAk`,
+        'Content-Type': 'application/json',
+      },
+    });
 
-// const url = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1';
-// const options = {
-//   method: 'GET',
-//   headers: {
-//     accept: 'application/json',
-//     Authorization: 'Bearer 97296fe3de1155f2e9ae05adf115394c'
-//   }
-// };
+    if (res.ok) {
+      const data = await res.json();
+      // console.log('API Response:', data); 
+      return data.results
+    } else {
+      console.error(`Error: ${res.status} - ${res.statusText}`);
+      return [];
+    }
+  } catch (error) {
+    console.error('Error fetching related movies:', error);
+    return [];
+  }
+}
 
-// fetch(url, options)
-//   .then(res => res.json())
-//   .then(json => console.log(json))
-//   .catch(err => console.error('error:' + err));
+export async function getProduction(movieId) {
+  try {
+    const res = await fetch(`${BASE_URL}/movie/${movieId}/watch/providers`, {
+      headers: {
+        'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NzI5NmZlM2RlMTE1NWYyZTlhZTA1YWRmMTE1Mzk0YyIsInN1YiI6IjY1Njc2MDBiYTM0OTExMDBhYzU4Njg1NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tOnFwRX8GjPQXxj7Zkd-EqMIQ3UhSWwImA3lyrHVXAk`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      console.log('API Response:', data.results.US.flatrate[0]); 
+      return data.results.US.flatrate[0]
+    } else {
+      console.error(`Error: ${res.status} - ${res.statusText}`);
+      return [];
+    }
+  } catch (error) {
+    console.error('Error fetching related movies:', error);
+    return [];
+  }
+}
+

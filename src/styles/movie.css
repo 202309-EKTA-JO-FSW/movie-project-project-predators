@@ -1,0 +1,102 @@
+.all {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .movieimage img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+  }
+  
+  .title {
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  .facts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .facts > div {
+    margin-right: 10px;
+  }
+  
+  .genres {
+    margin-right: 10px;
+  }
+  .runtime {
+    margin-left: 10px;
+  }
+  
+  .directors {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 5px;
+  }
+  
+  .director {
+    margin-right: 10px;
+  }
+  
+  .director b {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .director span {
+    display: block;
+    color: #555;
+  }
+  
+  .vote {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .actors,
+  .rlmovie {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .actor,
+  .related-item {
+    text-align: center;
+    margin: 10px;
+  }
+  
+  .actor img,
+  .related-item img {
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+  }
+  
+  .actor b,
+  .related-item b {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .actor span,
+  .related-item span {
+    display: block;
+    color: #555;
+  }
+  
+  .media,
+  .related {
+    margin-top: 20px;
+  }
+
+  
