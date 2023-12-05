@@ -1,5 +1,5 @@
 const API_KEY_HADEEL = process.env.NEXT_PUBLIC_API_KEY_HADEEL;
-const API_KEY_MASH = process.env.NEXT_PUBLIC_API_KEY
+const API_KEY_MASH = process.env.NEXT_PUBLIC_API_KEY_MASH
 // Diala's API
 // Ahmad's API
 
@@ -19,51 +19,50 @@ export async function getActors(page) {
       }
 }
 
-export async function getTrending() {
-    // using await and fetch to make the code more readable than using options and .then
-    try {
-    const res = await fetch(`${BASE_URL}/trending/movie/day?language=en-US&api_key=${API_KEY_MASH}`)
-    const data = await res.json()
-    return data.results 
+export async function getPopularMovies (page) {
+  try {
+      const res = await fetch(`${BASE_URL}/movie/popular?language=en-US&page=${page??1}&api_key=${API_KEY_MASH}`)
+      const data = await res.json();
+      console.log('API Response:', data)
+      return data.results
     } catch (error) {
-        console.error('Error fetching data:',error);
-        return [];
+      console.error('Error fetching data:',error);
+      return [];
     }
 }
 
-export async function getTopRated() {
-    try {
-    const res = await fetch(`${BASE_URL}/movie/top_rated?language=en-US&page=1&api_key=${API_KEY_MASH}`)
-    const data = await res.json()
-    return data.results 
-    }  catch (error) {
-        console.error('Error fetching data:',error);
-        return [];
-    }
-}
 
-export async function getMovieDetails () {
-    try {
-    const res = await fetch(`${BASE_URL}/movie/movie_id?language=en-US&api_key=${API_KEY_MASH}`)
-    const data = await res.json()
-    return data
-    }  catch (error) {
-        console.error('Error fetching data:',error);
-        return [];
-    }
-}
+// const fetch = require('node-fetch');
 
-export async function getMovieCredits () {
-    try {
-    const res = await fetch(`${BASE_URL}/movie/movie_id/credits?language=en-US&api_key=${API_KEY_MASH}`)
-    const data = await res.json()
-    return data.cast
-    }  catch (error) {
-        console.error('Error fetching data:',error);
-        return [];
-    }
-}
+// const url = 'https://api.themoviedb.org/3/movie/1075794?language=en-US';
+// const options = {
+//   method: 'GET',
+//   headers: {
+//     accept: 'application/json',
+//     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NzI5NmZlM2RlMTE1NWYyZTlhZTA1YWRmMTE1Mzk0YyIsInN1YiI6IjY1Njc2MDBiYTM0OTExMDBhYzU4Njg1NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tOnFwRX8GjPQXxj7Zkd-EqMIQ3UhSWwImA3lyrHVXAk'
+//   }
+// };
 
+// fetch(url, options)
+//   .then(res => res.json())
+//   .then(json => console.log(json))
+//   .catch(err => console.error('error:' + err));
+
+export async function getMovieDetails(movieId) {
+
+const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NzI5NmZlM2RlMTE1NWYyZTlhZTA1YWRmMTE1Mzk0YyIsInN1YiI6IjY1Njc2MDBiYTM0OTExMDBhYzU4Njg1NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tOnFwRX8GjPQXxj7Zkd-EqMIQ3UhSWwImA3lyrHVXAk',} 
+};
+
+const res = await fetch(url, options)
+const data = await res.json();
+      console.log('API Response:', data)
+      return data;
+}
 
 
 

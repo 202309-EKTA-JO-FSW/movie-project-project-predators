@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
-const Actor = () => {
+function Actor() {
   const router = useRouter();
   const { actorId } = router.query;
 

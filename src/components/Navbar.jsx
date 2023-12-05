@@ -13,7 +13,7 @@ export default function Navbar()
               Actors
             </Link>
             {' | '}
-            <Link href="/movies">
+            <Link href="/movies/popular">
                 movies
             </Link>
           </nav>
