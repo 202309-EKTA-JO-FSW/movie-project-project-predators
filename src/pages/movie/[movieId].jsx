@@ -73,24 +73,28 @@ export default function Movie() {
 // console.log(trailer)
   return (
     <div>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-            <div className="all">
-                <div className="movieimage">
-                    <img src={`${IMAGE_BASE_URL}${data?.backdrop_path}`} />
-                </div>
-                <div className="title">
-                <h2>{data?.original_title} ({formatDateYear(releaseDate?.release_dates[0].release_date)})</h2>
-                </div>
-                <div className="facts">
-                  <div style={{ border: '2px solid black', padding: '10px', display: 'inline-block' }}>
-                        <span className="date">{releaseDate?.release_dates[0].certification}</span>
-                        </div>
-                    <span className="date"> {formatDate(releaseDate?.release_dates[0].release_date)}</span>
-                    <span className="genres">{data?.genre_ids}</span>
-                    <span className="language">{data?.original_language && data.original_language.toUpperCase()}</span>
-                    <span className="runtime"> {rt}</span>
+    {loading ? (
+      <p>Loading...</p>
+    ) : (
+      <div className="all">
+        <div className="movieimage">
+          <img src={`${IMAGE_BASE_URL}${data?.poster_path}`} />
+        </div>
+        <div className="title">
+          <h2>{data?.original_title} ({formatDateYear(releaseDate?.release_dates[0]?.release_date)})</h2>
+        </div>
+        <div className="facts">
+          <div style={{ border: '2px solid black', padding: '10px', display: 'inline-block' }}>
+            {releaseDate?.release_dates[0]?.certification && (
+              <span className="date">{releaseDate.release_dates[0].certification}</span>
+            )}
+          </div>
+          {releaseDate?.release_dates[0]?.release_date && (
+            <span className="date">{formatDate(releaseDate.release_dates[0].release_date)}</span>
+          )}
+          {data?.genre_ids && <span className="genres">{data.genre_ids}</span>}
+          {data?.original_language && <span className="language">{data.original_language.toUpperCase()}</span>}
+          {rt && <span className="runtime">{rt}</span>}
                 </div>
                 <div className="vote">
                 <span className="average">User Score: {data?.vote_average ? `${(data.vote_average * 10).toFixed(1)}%` : 'N/A'}</span>
@@ -116,7 +120,7 @@ export default function Movie() {
                   <div className="actors">
                     {credit?.cast.slice(0, 5).map((actor, index) => (
                       <div key={actor.id} className='actor'>
-                        <Link href={`/actor/${actor.id}`}>
+                        <Link href={`/person/${actor.id}`}>
                       <img src={`${IMAGE_BASE_URL}${actor.profile_path}`} alt={`${actor.name}`} />
                       <b>{actor.name}</b> as {actor.character}
                       </Link>
@@ -126,49 +130,49 @@ export default function Movie() {
                 </div>
 
                 <div className="media">
-                <h3>Trailer</h3>
-  {trailer?.map((video) => (
-    <div key={video.id}>
-      {video.type === "Trailer" && (
-        <iframe
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/${video.key}`}
-          title={`${video.name} Trailer`}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
-      )}
-    </div>
-  ))}
-  <div className='production'>
-    <span>Production Company:   
-      <img style={{ width: '15px', height: '15px'}}  src={`${IMAGE_BASE_URL}${prod?.logo_path}`} alt={`${prod?.provider_name}} `} />
-      <b> {prod?.provider_name}</b></span>
-  </div>
-</div>
-
-                <div className='related'>
-  <h3>Related Movies</h3>
-  <div className='rlmovie'>
-    {related
-      ?.filter((movie) => movie.backdrop_path) // Filter out movies without a backdrop_path
-      .slice(0, 5)
-      .map((rlmovie, index, array) => (
-        <div key={rlmovie.id} className='related-item'>
-          <Link href={`/movie/${rlmovie.id}`}>
-          <img src={`${IMAGE_BASE_URL}${rlmovie.backdrop_path}`} alt={`${rlmovie.original_title} profile`} />
-          <b>{rlmovie.original_title}</b>
-          </Link>
-        </div>
-      ))}
-  </div>
-</div>
-
-                
+          <h3>Trailer</h3>
+          {trailer?.map((video) => (
+            <div key={video.id}>
+              {video.type === "Trailer" && (
+                <iframe
+                  width="560"
+                  height="315"
+                  src={`https://www.youtube.com/embed/${video.key}`}
+                  title={`${video.name} Trailer`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              )}
             </div>
-        )
-    }
-</div>
-  )
+          ))}
+          {prod && prod.logo_path && prod.provider_name && (
+            <div className='production'>
+              <span>Production Company:
+                <img style={{ width: '15px', height: '15px'}}  src={`${IMAGE_BASE_URL}${prod.logo_path}`} alt={`${prod.provider_name}`} />
+                <b> {prod.provider_name}</b>
+              </span>
+            </div>
+          )}
+        </div>
+
+        <div className='related'>
+          <h3>Related Movies</h3>
+          <div className='rlmovie'>
+            {related
+              ?.filter((movie) => movie.backdrop_path) // Filter out movies without a backdrop_path
+              .slice(0, 5)
+              .map((rlmovie, index, array) => (
+                <div key={rlmovie.id} className='related-item'>
+                  <Link href={`/movie/${rlmovie.id}`}>
+                    <img src={`${IMAGE_BASE_URL}${rlmovie.backdrop_path}`} alt={`${rlmovie.original_title} profile`} />
+                    <b>{rlmovie.original_title}</b>
+                  </Link>
+                </div>
+              ))}
+          </div>
+        </div>
+      </div>
+    )}
+  </div>
+);
 }

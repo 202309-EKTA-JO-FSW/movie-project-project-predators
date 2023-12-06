@@ -1,43 +1,115 @@
+body {
+  font-family: 'Arial', sans-serif; /* Use a modern font */
+  background-color: white; /* Background color for the body */
+  margin: 0;
+  padding: 0;
+}
+
+.wholenav {
+  background-color: black;
+}
+
+.thenav {
+  padding: 14px;
+  display: flex;
+  justify-content: space-between; /* Use space-between to push items to the sides */
+  align-items: center; /* Center items vertically */
+
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center the logo vertically */
+  font-family: 'Audiowide', cursive;
+  color: #99DECC;
+  font-size: 36px; /* Adjust font size */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a subtle shadow */
+}
+
+.logoimg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px; /* Increase margin for spacing */
+}
+
 nav {
-    display: flex;
-    justify-content: space-around;
-    background-color: tomato;
-    padding: 10px;
-  }
-  
-  .anchor {
-    color: white;
-    text-decoration: none;
-    position: relative;
-  }
-  
-  .anchor:hover {
-    background-color: #555;
-  }
-  
-  .dropdown {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #555;
-    padding: 10px;
-    display: none;
-  }
-  
-  .anchor.active .dropdown {
-    display: flex;
-  }
-  
-  .dropdown a {
-    color: white;
-    text-decoration: none;
-    margin: 5px 0;
-  }
-  
-  .dropdown a:hover {
-    text-decoration: underline;
-  }
-  
-  
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  padding-left: 30px;
+}
+
+.logotitle {
+  text-decoration: none;
+  color:#99DECC
+}
+
+.anchor {
+  color: white;
+  text-decoration: none;
+  position: relative;
+  padding: 10px;
+  transition: background-color 0.3s ease; /* Add a smooth transition */
+}
+
+.anchor:hover {
+  background-color: #555;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #555;
+  padding: 10px;
+  display: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+.anchor.active:hover .dropdown {
+  display: flex;
+}
+
+.dropdown a {
+  color: white;
+  text-decoration: none;
+  margin: 5px 0;
+}
+
+.dropdown a:hover {
+  text-decoration: underline;
+}
+
+.searchbar {
+  margin-left: auto; /* Align the search bar to the right */
+  position: relative;
+}
+
+.searchbar input[type="text"] {
+  width: 300px;
+  padding: 8px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  transition: box-shadow 0.3s ease; /* Add a smooth transition */
+}
+
+.searchbar input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Highlight on focus */
+}
+
+/* Add styling for placeholder text */
+.searchbar input[type="text"]::placeholder {
+  color: #bbb;
+}
+
+/* Add transition for placeholder text */
+.searchbar input[type="text"]:focus::placeholder {
+  color: transparent;
+}

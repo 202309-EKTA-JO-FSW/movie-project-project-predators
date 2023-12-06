@@ -36,24 +36,30 @@ export default function Home() {
   };
 
   return (
-    <div className="everything">
+    <div className="wholehome">
       {loading ? (
         <p>Loading...</p>
       ) : (
-      <div className='header'>
-        <h3 className='welcome'>Welcome to HDMA - Your Gateway to Cinematic Brilliance in High Definition!</h3>
-      <h3>What's Popular</h3>
-      <div className='latestmovies'>
-          {data.map(movie => (
-            <div key={movie.id} className='latest'>
-              <h2> {movie.original_title}</h2>
-              <Link href={`/movie/${movie.id}`}>
-                <img src={`${IMAGE_BASE_URL}${movie.poster_path}`} alt={`${movie.original_title} profile`} />
-              </Link>
-            </div>
-          ))}</div>
-      <button className='button' onClick={handleShowMoreClick}>Show more</button>
-      </div>
-      )}</div>
+        <div className='home'>
+          <h3 className='welcome'>Enjoy Our High Definition Movie Archive!</h3>
+          <h3 className='intro'>What's Popular</h3>
+          <div className='latestmovies'>
+            {data.map(movie => (
+              <div key={movie.id} className='latest'>
+                <Link href={`/movie/${movie.id}`}>
+                  <img src={`${IMAGE_BASE_URL}${movie.poster_path}`} alt={`${movie.original_title} profile`} />
+                </Link>
+                <div className='latest-content'>
+                  <h2>{movie.original_title}</h2>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className='buttonall'>    
+            <button className='button' onClick={handleShowMoreClick}>Show more</button>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }

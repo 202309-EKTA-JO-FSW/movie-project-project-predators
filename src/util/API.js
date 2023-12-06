@@ -23,7 +23,7 @@ export async function getPopularMovies (page) {
   try {
       const res = await fetch(`${BASE_URL}/movie/popular?language=en-US&page=${page??1}&api_key=${API_KEY_MASH}`)
       const data = await res.json();
-      console.log('API Response:', data)
+      // console.log('API Response:', data)
       return data.results
   } catch (error) {
     console.error('Error fetching data', error)
@@ -35,7 +35,7 @@ export async function getTopRated (page) {
   try {
       const res = await fetch(`${BASE_URL}/movie/top_rated?language=en-US&page=${page??1}&api_key=${API_KEY_MASH}`)
       const data = await res.json();
-      console.log('API Response:', data)
+      // console.log('API Response:', data)
       return data.results
   } catch (error) {
     console.error('Error fetching data', error)
@@ -47,7 +47,7 @@ export async function getNowPlaying (page) {
   try {
       const res = await fetch(`${BASE_URL}/movie/now_playing?language=en-US&page=${page??1}&api_key=${API_KEY_MASH}`)
       const data = await res.json();
-      console.log('API Response:', data)
+      // console.log('API Response:', data)
       return data.results
   } catch (error) {
     console.error('Error fetching data', error)
@@ -59,7 +59,7 @@ export async function getUpcoming (page) {
   try {
       const res = await fetch(`${BASE_URL}/movie/upcoming?language=en-US&page=${page??1}&api_key=${API_KEY_MASH}`)
       const data = await res.json();
-      console.log('API Response:', data)
+      // console.log('API Response:', data)
       return data.results
   } catch (error) {
     console.error('Error fetching data', error)
@@ -99,6 +99,18 @@ export async function getMovieDetails(movieId) {
     }
 }
 
+export async function getSearch(query, page) {
+  try {
+    const res = await fetch(`${BASE_URL}/search/multi?query=${query}&include_adult=false&language=en-US&page=${page??1}&api_key=${API_KEY_MASH}`)
+    const data = await res.json()
+    console.log('API RES', data)
+    return data.results
+    } catch (error) {
+      console.error('Error fetching data:',error);
+      return [];
+    }
+}
+
 export async function getMovieRelease(movieId) {
   try {
     const res = await fetch(`${BASE_URL}/movie/${movieId}/release_dates`, {
@@ -116,7 +128,6 @@ export async function getMovieRelease(movieId) {
       if (usRelease) {
         return usRelease;
       } else {
-        console.error('Release information not found for the United States.');
         return null;
       }
     } else {
@@ -243,7 +254,7 @@ export async function getProduction(movieId) {
 
     if (res.ok) {
       const data = await res.json();
-      console.log('API Response:', data.results.US.flatrate[0]); 
+      // console.log('API Response:', data.results.US.flatrate[0]); 
       return data.results.US.flatrate[0]
     } else {
       console.error(`Error: ${res.status} - ${res.statusText}`);

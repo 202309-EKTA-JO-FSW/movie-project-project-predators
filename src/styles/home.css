@@ -1,51 +1,86 @@
+.wholehome {
+  padding-inline: 200px;
+}
+
+
 .welcome {
-    font-size: 2em; /* Set the font size to make it huge */
-    text-align: center; /* Center the text */
-    color:#446d92; /* Set text color to white */
-    margin: 50px 0; /* Add margin for spacing */
-  }
-  
+  font-size: 2em;
+  text-align: center;
+  color: #446d92;
+  margin: 20px 0;
+  font-family: 'Audiowide', cursive;
+}
+
+h3, h2 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+}
+
+h3.intro {
+  font-size: 15pxs;
+}
 
 .latestmovies {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .latest {
-    flex: 0 0 20%; /* Set each movie to take 20% of the container width */
-    text-align: center;
-    margin: 10px;
-    justify-content: center;
-  }
-  
-  .latest img {
-    width: 75%; /* Make the image fill the container */
-    height: auto; /* Maintain aspect ratio */
-    object-fit: contain;
-    justify-content: center;
-  }
-  
-  .latest b {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    justify-content: center;
-  }
-  
-  .latest span {
-    display: block;
-    color: #555;
-    justify-content: center;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Adjusted to space-between for side margins */
+}
 
-  .header {
-    justify-content: center;
-    margin: 50px 0;
-    text-align: center;
-  }
-  .button {
-    margin-top: 20px;
-    width: 50%;
-    height: 40px;
-  }
+.latest {
+  flex: 0 0 calc(19.6% - 10px); /* Adjusted width to fit 5 movies with spacing */
+  text-align: center;
+  margin: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  border: 2px solid #446d92;
+}
+
+.latest:hover {
+  transform: scale(1.05);
+}
+
+.latest img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.latest-content {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.latest h2 {
+  margin-bottom: 1px 0;
+  font-weight: bold;
+}
+
+.buttonall {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button {
+  margin-top: 20px;
+  width: 50%;
+  max-width: 200%;
+  height: 40px;
+  background-color: #446d92;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+}
+
+.button:hover {
+  background-color: #34495e;
+}
