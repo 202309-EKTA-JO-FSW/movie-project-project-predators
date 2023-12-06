@@ -68,7 +68,7 @@ export default function Actors() {
         <ul className="actorsList">
           {data.map((actor) => (
             <li key={actor.id}>
-              <Link href={"/actor/" + actor.id}>
+              <Link href={"/person/" + actor.id}>
                 <img src={'https://image.tmdb.org/t/p/w235_and_h235_face' + actor.profile_path} alt={actor.name} />
               </Link>
               <h2>{actor.name}</h2>

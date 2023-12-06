@@ -1,27 +1,4 @@
-
-body {
-  margin: 0 auto;
-    font-family: "Source Sans Pro", Arial, sans-serif;
-    background-color: #cfb2ed;
-  }
-  
-
-header {
-  background-color: tomato;
-  box-shadow: 1px 1px 5px 0px tomato;
-}
-
-nav {
-  height: 50px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 400px;
-  margin-left: 50px;
-  justify-content: space-between;
-}
-
-.anchor {
-  text-decoration: none;
-  color: white;
+* {
+  margin: 0;
+  padding: 0;
 }
