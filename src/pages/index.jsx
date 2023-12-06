@@ -38,11 +38,13 @@ export default function Home() {
   return (
     <div className="wholehome">
       {loading ? (
-        <p>Loading...</p>
+        <p>Working on it...</p>
       ) : (
         <div className='home'>
-          <h3 className='welcome'>Enjoy Our High Definition Movie Archive!</h3>
-          <h3 className='intro'>What's Popular</h3>
+         <h3 className='welcome'>
+            Enjoy Our <span style={{ color: '#99DECC', textShadow: '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black' }}>H</span>igh <span style={{ color: '#99DECC', textShadow: '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black' }}>D</span>efinition <span style={{ color: '#99DECC', textShadow: '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black' }}>M</span>ovie <span style={{ color: '#99DECC', textShadow: '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black' }}>A</span>rchive!
+          </h3>
+          <h3 className='intro'></h3>
           <div className='latestmovies'>
             {data.map(movie => (
               <div key={movie.id} className='latest'>

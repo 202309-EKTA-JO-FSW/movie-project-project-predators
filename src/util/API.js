@@ -99,6 +99,17 @@ export async function getMovieDetails(movieId) {
     }
 }
 
+export async function getMovieImages(movieId) {
+  try {
+    const res = await fetch(`${BASE_URL}/movie/${movieId}images&api_key=${API_KEY_MASH}`)
+    const data = await res.json()
+    return data
+    } catch (error) {
+      console.error('Error fetching data:',error);
+      return [];
+    }
+}
+
 export async function getSearch(query, page) {
   try {
     const res = await fetch(`${BASE_URL}/search/multi?query=${query}&include_adult=false&language=en-US&page=${page??1}&api_key=${API_KEY_MASH}`)

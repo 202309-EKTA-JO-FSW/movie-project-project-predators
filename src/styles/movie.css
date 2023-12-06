@@ -1,102 +1,201 @@
-.all {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .movieimage img {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-  }
-  
-  .title {
-    margin: 20px 0;
-    text-align: center;
-  }
-  
-  .facts {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .facts > div {
-    margin-right: 10px;
-  }
-  
-  .genres {
-    margin-right: 10px;
-  }
-  .runtime {
-    margin-left: 10px;
-  }
-  
-  .directors {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    margin-top: 5px;
-  }
-  
-  .director {
-    margin-right: 10px;
-  }
-  
-  .director b {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .director span {
-    display: block;
-    color: #555;
-  }
-  
-  .vote {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .actors,
-  .rlmovie {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .actor,
-  .related-item {
-    text-align: center;
-    margin: 10px;
-  }
-  
-  .actor img,
-  .related-item img {
-    width: 100%;
-    max-height: 150px;
-    object-fit: cover;
-  }
-  
-  .actor b,
-  .related-item b {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .actor span,
-  .related-item span {
-    display: block;
-    color: #555;
-  }
-  
-  .media,
-  .related {
-    margin-top: 20px;
-  }
+.themovie {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-  
+.section1,
+.section2,
+.section3,
+.section4 {
+  width: 100%; /* Ensure each section takes up the full width */
+  margin-bottom: 20px; /* Add margin to separate the sections */
+}
+
+.section1 {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-gap: 20px; 
+}
+
+.movieimage {
+  grid-row: span 7;
+}
+
+.movieimage img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #446d92;
+  margin-inline: 100px;
+  margin-top: .5vw;
+}
+
+.therealimg {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.title,
+.facts,
+.vote,
+.overview,
+.overview1,
+.crew {
+  margin-left: 8vw;
+}
+
+
+.title,
+.date,
+.language,
+.runtime,
+.facts,
+.vote,
+.overview,
+.crew {
+  grid-column: 2;
+  justify-self: start ;
+  font-size: 1vw;
+}
+
+.title {
+  font-size: 2.6vw; /* Larger font size for the title */
+  margin-top: 2vw; /* Adjust margin for the title */
+}
+
+.certification {
+  border: 1px solid black;
+}
+
+.facts * {
+  padding-inline: .25vw;
+}
+
+.date {
+  margin-left: 3px;
+  margin-right: -2px;
+}
+
+.language {
+  font-weight: bolder;
+}
+
+.average {
+  color: rgb(42, 169, 42);
+  font-weight: bold;
+}
+
+.overview {
+  font-size: 1.5vw;
+}
+
+.overview1 {
+  font-size: 1vw;
+}
+
+.crew {
+  display: grid;
+  justify-content: space-between;
+}
+
+.job {
+  font-weight: bold;
+}
+
+.section2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-top: 10px;
+  margin-left: -12px;
+}
+
+.cast {
+  text-align: center;
+  font-size: 1.5vw;
+  margin-bottom: 10px;
+  padding-top: 10px;
+}
+
+.actor {
+  margin: 10px;
+  text-align: center;
+}
+
+.actor img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px; /* Apply border-radius to actor images */
+  border: 2px solid #446d92
+}
+
+.actor b,
+.actor span {
+  display: block;
+  color: #555;
+}
+
+
+.trailer {
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+}
+
+.section3 {
+  display: grid;
+text-align: center;
+}
+
+.media {
+  width: auto;
+  height: 26vw;
+}
+
+.media iframe {
+  height: 25vw;
+  width: 45vw;
+  border-radius: 8px; /* Apply border-radius to media (trailers) */
+  border: 2px solid #446d92
+}
+
+.production {
+  display: grid;
+  font-size: 1.2vw;
+  margin-bottom: 10px;
+  padding-top: 10px;
+}
+
+.section4 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-top: 10px;
+  margin-left: -12px;
+  text-align: center;
+}
+
+.relatedt {
+  font-size: 1.5vw;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.related-item img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px; /* Apply border-radius to actor images */
+  border: 2px solid #446d92
+}
+
+related-item,
+.related-item b {
+  display: block;
+  color: #555;
+}
