@@ -71,108 +71,112 @@ export default function Movie() {
 // console.log(credit)
 // console.log(related)
 // console.log(trailer)
-  return (
-    <div>
+return (
+  <div className='singlemovie'>
     {loading ? (
       <p>Working on it...</p>
     ) : (
-      <div className="all">
-        <div className="movieimage">
-          <img src={`${IMAGE_BASE_URL}${data?.poster_path}`} />
-        </div>
-        <div className="title">
-          <h2>{data?.original_title} ({formatDateYear(releaseDate?.release_dates[0]?.release_date)})</h2>
-        </div>
-        <div className="facts">
-          <div style={{ border: '2px solid black', padding: '10px', display: 'inline-block' }}>
-            {releaseDate?.release_dates[0]?.certification && (
-              <span className="date">{releaseDate.release_dates[0].certification}</span>
-            )}
+      <div className="themovie">
+        {/* Section 1 */}
+        <div className="section1">
+          <div className="movieimage">
+            <img className='therealimg' src={`${IMAGE_BASE_URL}${data?.poster_path}`} />
           </div>
-          {releaseDate?.release_dates[0]?.release_date && (
-            <span className="date">{formatDate(releaseDate.release_dates[0].release_date)}</span>
-          )}
-          {data?.genre_ids && <span className="genres">{data.genre_ids}</span>}
-          {data?.original_language && <span className="language">{data.original_language.toUpperCase()}</span>}
-          {rt && <span className="runtime">{rt}</span>}
-                </div>
-                <div className="vote">
-                <span className="average">User Score: {data?.vote_average ? `${(data.vote_average * 10).toFixed(1)}%` : 'N/A'}</span>
+            <h2 className='title'>{data?.original_title} ({formatDateYear(releaseDate?.release_dates[0]?.release_date)})</h2>
+            <div className='facts'>
+              {releaseDate?.release_dates[0]?.certification && (
+              <span className="certification">{releaseDate.release_dates[0].certification}</span>
+            )}
+            {releaseDate?.release_dates[0]?.release_date && (
+              <span className="date">{formatDate(releaseDate.release_dates[0].release_date)}</span>
+            )}
+            {rt && <span className="runtime">{rt}</span>}
+            {data?.original_language && <span className="language">{data.original_language.toUpperCase()}</span>}
+            </div>
+            <div className="vote">
+            User Score<span className="average"> {data?.vote_average ? `${(data.vote_average * 10).toFixed(1)}%` : 'N/A'}</span>
                 <span className="count"> ({data?.vote_count} Ratings)</span>
                 </div>
-                <div className="overview">
-                    <h3>Overview</h3>
-                    <h4>{data?.overview}</h4>
-                </div>
-
-                <div className="crew"> Directors:
-                  <div className="directors">
-                  {credit?.crew
-                  .filter((crewMember) => crewMember.job === "Director").slice(0, 2).map((director, index, array) => (
-                    <div key={director.id} className='director'>
-                      <b>{director.name}</b>
-                    </div>
-                  ))}
+            <h3 className='overview'>Overview</h3>
+            <span className='overview1'>{data?.overview}</span>
+          <div className="crew">
+            <span className='job'>Directors:</span>
+            <div className="directors">
+              {credit?.crew
+                .filter((crewMember) => crewMember.job === "Director")
+                .slice(0, 2)
+                .map((director, index, array) => (
+                  <div key={director.id} className='director'>
+                    <span>{director.name}</span>
                   </div>
-                </div>
-                <div className="cast">
-                  <h3>Cast</h3>
-                  <div className="actors">
-                    {credit?.cast.slice(0, 5).map((actor, index) => (
-                      <div key={actor.id} className='actor'>
-                        <Link href={`/person/${actor.id}`}>
-                      <img src={`${IMAGE_BASE_URL}${actor.profile_path}`} alt={`${actor.name}`} />
-                      <b>{actor.name}</b> as {actor.character}
-                      </Link>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="media">
-          <h3>Trailer</h3>
-          {trailer?.map((video) => (
-            <div key={video.id}>
-              {video.type === "Trailer" && (
-                <iframe
-                  width="560"
-                  height="315"
-                  src={`https://www.youtube.com/embed/${video.key}`}
-                  title={`${video.name} Trailer`}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              )}
+                ))}
             </div>
-          ))}
-          {prod && prod.logo_path && prod.provider_name && (
-            <div className='production'>
-              <span>Production Company:
-                <img style={{ width: '15px', height: '15px'}}  src={`${IMAGE_BASE_URL}${prod.logo_path}`} alt={`${prod.provider_name}`} />
-                <b> {prod.provider_name}</b>
-              </span>
-            </div>
-          )}
+          </div>
         </div>
 
-        <div className='related'>
-          <h3>Related Movies</h3>
-          <div className='rlmovie'>
-            {related
-              ?.filter((movie) => movie.backdrop_path) // Filter out movies without a backdrop_path
-              .slice(0, 5)
-              .map((rlmovie, index, array) => (
-                <div key={rlmovie.id} className='related-item'>
-                  <Link href={`/movie/${rlmovie.id}`}>
-                    <img src={`${IMAGE_BASE_URL}${rlmovie.backdrop_path}`} alt={`${rlmovie.original_title} profile`} />
-                    <b>{rlmovie.original_title}</b>
+        {/* Section 2 */}
+        <h3 className='cast'>Cast</h3>
+        <div className="section2">
+              {credit?.cast.slice(0, 5).map((actor, index) => (
+                <div key={actor.id} className='actor'>
+                  <Link href={`/person/${actor.id}`}>
+                    <img src={`${IMAGE_BASE_URL}${actor.profile_path}`} alt={`${actor.name}`} />
+                    <b>{actor.name}</b> as {actor.character}
                   </Link>
                 </div>
               ))}
+        </div>
+
+        {/* Section 3 */}
+        
+        <h3 className='trailer'>Trailer</h3>
+
+        <div className="section3">
+          <div className="media">
+            {trailer?.map((video) => (
+              <div key={video.id}>
+                {video.type === "Trailer" && (
+                  <iframe
+                    src={`https://www.youtube.com/embed/${video.key}`}
+                    title={`${video.name} Trailer`}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                )}
+              </div>
+                          ))}
+              </div>
+
+            <div>
+            {prod && prod.logo_path && prod.provider_name && (
+              <div className='production'>
+                <span>
+                  Production Company
+                  <img style={{ width: '1vw', height: '1vw' }} src={`${IMAGE_BASE_URL}${prod.logo_path}`} alt={`${prod.provider_name}`} />
+                  <b> {prod.provider_name}</b>
+                </span>
+              </div>
+            )}
           </div>
         </div>
-      </div>
+
+        {/* Section 4 */}
+        <h3 className='relatedt'>Related Movies</h3>
+        <div className="section4">
+              {related
+                ?.filter((movie) => movie.poster_path)
+                .slice(0, 5)
+                .map((rlmovie, index, array) => (
+                  <div key={rlmovie.id} className='related-item'>
+                    <Link href={`/movie/${rlmovie.id}`}>
+                      <img src={`${IMAGE_BASE_URL}${rlmovie.poster_path}`} alt={`${rlmovie.original_title} profile`} />
+                      <b>{rlmovie.original_title}</b>
+                    </Link>
+                  </div>
+                ))}
+          </div>
+        </div>
     )}
   </div>
 );
-}
+                }
