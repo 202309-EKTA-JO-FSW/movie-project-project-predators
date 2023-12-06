@@ -74,7 +74,7 @@ export default function Movie() {
   return (
     <div>
     {loading ? (
-      <p>Loading...</p>
+      <p>Working on it...</p>
     ) : (
       <div className="all">
         <div className="movieimage">

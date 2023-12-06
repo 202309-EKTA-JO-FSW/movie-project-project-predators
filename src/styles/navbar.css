@@ -1,12 +1,6 @@
-body {
-  font-family: 'Arial', sans-serif; /* Use a modern font */
-  background-color: white; /* Background color for the body */
-  margin: 0;
-  padding: 0;
-}
-
 .wholenav {
   background-color: black;
+  font-family: 'Arial', sans-serif;
 }
 
 .thenav {
@@ -14,6 +8,7 @@ body {
   display: flex;
   justify-content: space-between; /* Use space-between to push items to the sides */
   align-items: center; /* Center items vertically */
+  font-size: 18px;
 
 }
 .logo {
@@ -93,6 +88,7 @@ nav {
 .searchbar input[type="text"] {
   width: 300px;
   padding: 8px;
+  margin-top: 3px;
   border: 1px solid #aaa;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
