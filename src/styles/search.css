@@ -1,0 +1,19 @@
+searchall {
+    display: grid;
+}
+
+.searchlist {
+
+    display: grid;
+}
+
+.searchitem img {
+    width: 300px;
+    height: auto;
+}
+
+.itemtitle {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

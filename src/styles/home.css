@@ -111,3 +111,14 @@ h3.introm {
   font-size: 3em;
   background-color: whitesmoke;
 }
+
+.tv {
+  font-size: 80px;
+  text-align: center;
+  min-height: 100vh; /* Set a minimum height of the viewport height */
+  margin: 0; /* Remove default margin to ensure full height is used */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}

@@ -1,55 +1,59 @@
 .actorCard {
-  width: 80%;
-  height: 400px;
-  border-radius: 10px;
-  background-color: aliceblue;
-  display: flex;
-  flex-direction: column;
-  padding: 32px;
-  margin: 0 auto;
-  box-shadow: 1px 1px 5px 1px aliceblue;
-  
+  width: 100%;
+  border-radius: 8px;
+  background-color: #f0f0f0; /* Change the background color as per your design */
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-gap: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.readMore {
-  color: blue;
-  cursor: pointer;
-}
 
-.cardHeader{
-  display: flex;
-  align-items: center;
-}
 .imageContainer img {
-  width: 250px;
-  height: 380px;
-  border-radius: 10px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
 
 .listStyle {
   list-style: none;
-  align-self: center;
+  margin: 1vw;
+  padding: 0;
 }
 
 .listStyle div {
   margin-bottom: 20px;
 }
 
+.listStyle h1 {
+  font-size: 2.6vw;
+  margin: 0;
+}
+
 .listStyle p {
-  font-weight: 700;
+  font-size: 1vw;
+  margin: 0;
 }
 
 .listStyle span {
-  font-weight: 400;
+  font-weight: bold;
 }
 
-.bio{
-  overflow-wrap: break-word;
-}
-.horizontalLine{
+.horizontalLine {
   width: 100%;
   margin-top: 16px;
   border: 1px dotted lightgray;
+}
+
+.bio {
+  overflow-wrap: break-word;
+}
+
+.readMore {
+  color: blue;
+  cursor: pointer;
 }
 
 .dropdownContainer {
@@ -70,14 +74,14 @@
 
 .dropdownList {
   position: absolute;
-  bottom: 100%; /* Change to bottom to open upwards */
+  bottom: 100%;
   left: 0;
   width: 100%;
-  max-height: 150px; /* Set the maximum height you desire */
+  max-height: 150px;
   overflow-y: auto;
   border: 1px solid #ccc;
-  border-bottom: none; /* Remove the bottom border to create a seamless look */
-  border-radius: 4px 4px 0 0; /* Adjust border-radius for the top corners */
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
   background-color: white;
   list-style: none;
   margin: 0;

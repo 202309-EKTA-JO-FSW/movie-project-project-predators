@@ -48,27 +48,30 @@ export default function SearchResults() {
   };
 
   return (
-    <div>
+    <div className='searchall'>
       <h2>Search Results for: {q}</h2>
       {loading ? (
         <p>Loading...</p>
       ) : results.length > 0 ? (
         <>
-          <ul>
+          <ul className='searchlist'>
             {results.map((media) => (
               // Exclude results without a poster or profile image
               media.poster_path || media.profile_path ? (
-                <li key={media.id} className='list'>
-                  {getTitle(media)}
-                  {media.media_type === 'person' && (
-                    <span> (Actor)</span>
-                  )}
+                <li key={media.id} className='searchitem'>
                   <Link href={`/${media.media_type}/${media.id}`}>
                     <img
                       src={`${IMAGE_BASE_URL}${media.media_type === 'person' ? media.profile_path : media.poster_path}`}
                       alt={`${getTitle(media)} profile`}
                     />
                   </Link>
+                  <div className='itemtitle'><b>
+                    {getTitle(media)}
+                    {media.media_type === 'person' && (
+                      <span> (Actor)</span>
+                    )}
+                    </b>
+                  </div>
                 </li>
               ) : null
             ))}

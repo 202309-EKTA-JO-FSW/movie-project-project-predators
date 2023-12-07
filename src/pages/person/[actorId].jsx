@@ -35,24 +35,20 @@ export default function Actor() {
   };
 
   return (
-    <div>
+    <div className='theactor'>
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div>
-          <h1>Actor Details</h1>
+        <div className='both'>
           <div className='actorCard'>
-            <div className='cardHeader'>
               <div className='imageContainer'>
                 <img src={'https://www.themoviedb.org/t/p/w300_and_h450_bestv2' + data?.profile_path} alt={data?.name} />
-              </div>
-              <div>
+                </div>
                 <ul className='listStyle'>
-                  <div>
                     <li>
                       <h1><span>{data?.name}</span></h1>
                     </li>
-                    <li>
+                    <li className='list'>
                       <p>Gender: <span>
                         {data && (
                           <span>
@@ -73,24 +69,21 @@ export default function Actor() {
                     <li>
                       <p>Birthday: <span>{data?.birthday}</span></p>
                     </li>
-                  </div>
                   <li>
                     <div className='horizontalLine'></div>
                   </li>
                   <li>
                     <p className='bio'>
-                      Biography: <span>{expanded ? data?.biography : `${data?.biography.slice(0, 1155)}`}
+                      <b>Biography:</b> <div>{expanded ? data?.biography : `${data?.biography.slice(0, 1155)}`}
                         {data?.biography.length > 1155 && (
                           <span className='readMore' onClick={toggleExpanded}>
                             {expanded ? ' Read Less' : '... Read More'}
                           </span>
                         )}
-                      </span>
+                      </div>
                     </p>
                   </li>
                 </ul>
-              </div>
-            </div>
           </div>
         </div>
       )}

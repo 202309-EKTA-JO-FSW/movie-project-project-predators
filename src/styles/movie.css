@@ -23,11 +23,10 @@
 .movieimage img {
   width: 100%;
   height: auto;
-  object-fit: cover;
   border-radius: 8px;
   border: 2px solid #446d92;
   margin-inline: 100px;
-  margin-top: .5vw;
+  margin-top: .8vw;
 }
 
 .therealimg {
@@ -44,7 +43,7 @@
 .overview,
 .overview1,
 .crew {
-  margin-left: 8vw;
+  margin-left: 100px;
 }
 
 
@@ -62,7 +61,7 @@
 }
 
 .title {
-  font-size: 2.6vw; /* Larger font size for the title */
+  font-size: 2.2vw; /* Larger font size for the title */
   margin-top: 2vw; /* Adjust margin for the title */
 }
 
@@ -111,6 +110,7 @@
   justify-content: space-evenly;
   padding-top: 10px;
   margin-left: -12px;
+  
 }
 
 .cast {
@@ -123,6 +123,7 @@
 .actor {
   margin: 10px;
   text-align: center;
+
 }
 
 .actor img {
@@ -148,14 +149,9 @@
 }
 
 .section3 {
-  display: grid;
 text-align: center;
 }
 
-.media {
-  width: auto;
-  height: 26vw;
-}
 
 .media iframe {
   height: 25vw;
@@ -164,11 +160,26 @@ text-align: center;
   border: 2px solid #446d92
 }
 
+.media {
+  display: grid;
+  align-items: center;
+}
+
 .production {
   display: grid;
   font-size: 1.2vw;
   margin-bottom: 10px;
   padding-top: 10px;
+}
+
+.company {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.company * {
+  padding-inline: .2vw;
 }
 
 .section4 {
@@ -198,4 +209,12 @@ related-item,
 .related-item b {
   display: block;
   color: #555;
+}
+
+.singlemovie p {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 3em;
+  background-color: whitesmoke;
 }

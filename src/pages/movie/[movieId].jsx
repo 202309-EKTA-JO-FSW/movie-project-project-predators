@@ -119,7 +119,7 @@ return (
         <div className="section2">
               {credit?.cast.slice(0, 5).map((actor, index) => (
                 <div key={actor.id} className='actor'>
-                  <Link href={`/person/${actor.id}`}>
+                  <Link href={`/person/${actor.id}`} style={{textDecoration: 'none', color: 'inherit'}}>
                     <img src={`${IMAGE_BASE_URL}${actor.profile_path}`} alt={`${actor.name}`} />
                     <b>{actor.name}</b> as {actor.character}
                   </Link>
@@ -127,38 +127,38 @@ return (
               ))}
         </div>
 
-        {/* Section 3 */}
-        
-        <h3 className='trailer'>Trailer</h3>
+{/* Section 3 */}
+<h3 className='trailer'>Trailer</h3>
 
-        <div className="section3">
-          <div className="media">
-            {trailer?.map((video) => (
-              <div key={video.id}>
-                {video.type === "Trailer" && (
-                  <iframe
-                    src={`https://www.youtube.com/embed/${video.key}`}
-                    title={`${video.name} Trailer`}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                )}
-              </div>
-                          ))}
-              </div>
+<div className={`section3 ${trailer && trailer.length === 1 ? 'centered-trailer' : ''}`}>
+  <div className={`media ${trailer && trailer.length === 2 ? 'two-trailers' : ''}`}>
+    {trailer?.map((video) => (
+      <div key={video.id}>
+        {video.type === "Trailer" && (
+          <iframe
+            src={`https://www.youtube.com/embed/${video.key}`}
+            title={`${video.name} Trailer`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        )}
+      </div>
+    ))}
+  </div>
 
-            <div>
-            {prod && prod.logo_path && prod.provider_name && (
-              <div className='production'>
-                <span>
-                  Production Company
-                  <img style={{ width: '1vw', height: '1vw' }} src={`${IMAGE_BASE_URL}${prod.logo_path}`} alt={`${prod.provider_name}`} />
-                  <b> {prod.provider_name}</b>
-                </span>
-              </div>
-            )}
-          </div>
+  <div>
+    {prod && prod.logo_path && prod.provider_name && (
+      <div className='production'>
+        <div className='company'>
+          <img style={{ width: '1.9vw', height: '1.9vw' }} src={`${IMAGE_BASE_URL}${prod.logo_path}`} alt={`${prod.provider_name}`} />
+          <b> {prod.provider_name}</b>
+          <b>Production</b>
         </div>
+      </div>
+    )}
+  </div>
+</div>
+
 
         {/* Section 4 */}
         <h3 className='relatedt'>Related Movies</h3>
@@ -168,7 +168,7 @@ return (
                 .slice(0, 5)
                 .map((rlmovie, index, array) => (
                   <div key={rlmovie.id} className='related-item'>
-                    <Link href={`/movie/${rlmovie.id}`}>
+                    <Link href={`/movie/${rlmovie.id}`} style={{textDecoration: 'none', color: 'inherit'}}>
                       <img src={`${IMAGE_BASE_URL}${rlmovie.poster_path}`} alt={`${rlmovie.original_title} profile`} />
                       <b>{rlmovie.original_title}</b>
                     </Link>
