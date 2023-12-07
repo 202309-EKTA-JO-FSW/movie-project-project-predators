@@ -36,23 +36,31 @@ export default function TopRated() {
   };
 
   return (
-    <div className='header'>
+    <div className='wholehome'>
       {loading ? (
-        <p>Loading...</p>
+        <p>Working on it...</p>
       ) : (
+        <div className='home'>
+          <h3 className='introm'>Top Rated</h3>
         <div className='latestmovies'>
           {data.map(movie => (
             <div key={movie.id} className='latest'>
-              <h2> {movie.original_title}</h2>
               <Link href={`/movie/${movie.id}`}>
                 <img src={`${IMAGE_BASE_URL}${movie.poster_path}`} alt={`${movie.original_title} profile`} />
               </Link>
+              <div className='latest-content'>
+                <h2> {movie.original_title}</h2>
+              </div> 
             </div>
           ))}
         </div>
+        <div className='buttonall'>    
+            <button className='button' onClick={handleShowMoreClick}>Show more</button>
+          </div>
+        </div>
       )}
-
-      <button className='button' onClick={handleShowMoreClick}>Show more</button>
     </div>
+  
   );
+
 }

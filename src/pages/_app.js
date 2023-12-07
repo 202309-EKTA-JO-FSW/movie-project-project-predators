@@ -4,6 +4,7 @@ import '@/styles/actor.css'
 import '@/styles/movie.css'
 import '@/styles/home.css'
 import '@/styles/navbar.css'
+import '@/styles/search.css'
 import Navbar from '../components/Navbar'
 import Footer from '@/components/Footer'
 
